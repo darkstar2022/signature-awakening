@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><style>
+/* Signature: The Awakening - Digital Graphic Novel Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0c0c2b 0%, #1e1e3f 50%, #2d1b69 100%);
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(45deg, #4a0e4e, #81237a, #b83dba);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    opacity: 0.3;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)); }
+    to { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6)); }
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+    font-style: italic;
+}
+
+.artist-name {
+    font-size: 1.8rem;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Song Section Styles */
+.song-section {
+    margin: 80px 0;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.song-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    opacity: 0.8;
+}
+
+.song-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.song-number {
+    font-size: 1.2rem;
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.song-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.song-description {
+    font-size: 1.1rem;
+    color: #cccccc;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+}
+
+/* Audio Controls */
+.audio-controls {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.play-btn {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Panel Grid */
+.panels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.panel {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.panel:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.panel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.footer p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.social-links a {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: 2px solid #ffd700;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #ffd700;
+    color: #2c3e50;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.5rem; }
+    .song-title { font-size: 2rem; }
+    .panels-grid { grid-template-columns: 1fr; }
+    .song-section { padding: 20px; margin: 40px 0; }
+    .social-links { flex-direction: column; align-items: center; }
+}
+</style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature: The Awakening | Dark Star Energy</title>
+    
+    <meta name="description" content="An interactive digital graphic novel following a spiritual awakening journey through 11 songs by Dark Star Energy">
+    <meta property="og:title" content="Signature: The Awakening">
+    <meta property="og:description" content="Experience the ultimate spiritual awakening story - completely free">
+    <meta property="og:image" content="images/song4/panel2.jpg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Audio Elements -->
+    <audio id="song1" preload="none"><source src="audio/song1-minds-on-lockdown.mp3" type="audio/mpeg"></audio>
+    <audio id="song2" preload="none"><source src="audio/song2-vengeance.mp3" type="audio/mpeg"></audio>
+    <audio id="song3" preload="none"><source src="audio/song3-attacks-the-brain.mp3" type="audio/mpeg"></audio>
+    <audio id="song4" preload="none"><source src="audio/song4-for-your-protection.mp3" type="audio/mpeg"></audio>
+    <audio id="song5" preload="none"><source src="audio/song5-confirmation.mp3" type="audio/mpeg"></audio>
+    <audio id="song6" preload="none"><source src="audio/song6-numb.mp3" type="audio/mpeg"></audio>
+    <audio id="song7" preload="none"><source src="audio/song7-life-without-instructions.mp3" type="audio/mpeg"></audio>
+    <audio id="song8" preload="none"><source src="audio/song8-meditation-ride-that-wave.mp3" type="audio/mpeg"></audio>
+    <audio id="song9" preload="none"><source src="audio/song9-tree-of-life.mp3" type="audio/mpeg"></audio>
+    <audio id="song10" preload="none"><source src="audio/song10-amazing-me.mp3" type="audio/mpeg"></audio>
+    <audio id="song11" preload="none"><source src="audio/song11-self-explorer.mp3" type="audio/mpeg"></audio>
+    
+    <!-- Audio Controls -->
+    <div id="audio-controls" class="audio-controls">
+        <button id="play-pause" class="control-btn" title="Play/Pause">▶️</button>
+        <button id="mute" class="control-btn" title="Mute/Unmute">🔊</button>
+        <input type="range" id="volume" min="0" max="100" value="70" title="Volume">
+        <span id="current-song">Ready to Begin</span>
+    </div>
+    
+    <!-- Main Content -->
+    <main id="story-container">
+        <!-- Header -->
+        <header class="main-header">
+            <h1>SIGNATURE: THE AWAKENING</h1>
+            <p class="subtitle">A Spiritual Journey Through 11 Songs</p>
+            <p class="by-line">by Dark Star Energy</p>
+            <p class="intro">Scroll down and let the music guide you through this transformation...</p>
+        </header>
+        
+        <!-- Song 1: Your Mind's On Lockdown -->
+        <section class="song-section" id="song1-section" data-song="song1">
+            <div class="song-title">
+                <h2>Song 1: Your Mind's On Lockdown</h2>
+                <p class="song-desc">A song to wake up you sleeping gods. Your attention is being controlled.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song1-start">
+                    <img src="images/song1/panel1.jpg" alt="The mundane prison of daily routine" loading="lazy">
+                    <div class="panel-text">
+                        <p>The daily grind. Going through the motions. Something feels... wrong.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song1/panel2.jpg" alt="First glimpse of the control system" loading="lazy">
+                    <div class="panel-text">
+                        <p>The first crack in the illusion. You begin to see the control systems.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song1/panel3.jpg" alt="Full awareness of mental imprisonment" loading="lazy">
+                    <div class="panel-text">
+                        <p>The mental prison revealed. Your mind is on lockdown, but now you know.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 2: Vengeance -->
+        <section class="song-section" id="song2-section" data-song="song2">
+            <div class="song-title">
+                <h2>Song 2: Vengeance</h2>
+                <p class="song-desc">Being betrayed and waking up to see the lie that holds you back from your true divine nature.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song2-awakening">
+                    <img src="images/song2/panel1.jpg" alt="Realizing the depth of betrayal" loading="lazy">
+                    <div class="panel-text">
+                        <p>The betrayal hits. You realize you've been lied to about what you truly are.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song2/panel2.jpg" alt="Divine power awakening with righteous fury" loading="lazy">
+                    <div class="panel-text">
+                        <p>Divine wrath awakens. The sleeping god remembers and gets PISSED.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song2/panel3.jpg" alt="Ready for war against deception" loading="lazy">
+                    <div class="panel-text">
+                        <p>Ready for war. The divine being awakens and chooses to fight back.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 3: Attacks The Brain -->
+        <section class="song-section" id="song3-section" data-song="song3">
+            <div class="song-title">
+                <h2>Song 3: Attacks The Brain</h2>
+                <p class="song-desc">Being controlled and used as worker bees instead of the divine creator gods that we are.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song3-liberation">
+                    <img src="images/song3/panel1.jpg" alt="Seeing the corporate prison system" loading="lazy">
+                    <div class="panel-text">
+                        <p>The worker bee control system revealed. Divine creators reduced to slaves.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song3/panel2.jpg" alt="Breaking free from mental slavery" loading="lazy">
+                    <div class="panel-text">
+                        <p>Breaking the chains. Divine energy shattering the false programming.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song3/panel3.jpg" alt="Standing free as divine creator" loading="lazy">
+                    <div class="panel-text">
+                        <p>Complete liberation. No longer a worker bee, now the awakened creator god.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 4: For Your Protection -->
+        <section class="song-section" id="song4-section" data-song="song4">
+            <div class="song-title">
+                <h2>Song 4: For Your Protection</h2>
+                <p class="song-desc">A spiritual protection spell invoking the goddess Sekmet. If she was good enough to protect the gods, she's good enough to protect us now.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song4-sekmet">
+                    <img src="images/song4/panel1.jpg" alt="Calling on ancient protection" loading="lazy">
+                    <div class="panel-text">
+                        <p>Calling on ancient wisdom. The spiritual protection spell begins.</p>
+                    </div>
+                </div>
+                
+                <div class="panel epic-panel">
+                    <img src="images/song4/panel2.jpg" alt="Sekmet manifestation" loading="lazy">
+                    <div class="panel-text">
+                        <p>SEKMET APPEARS. The lioness goddess manifests in all her divine glory.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song4/panel3.jpg" alt="Blessed and protected" loading="lazy">
+                    <div class="panel-text">
+                        <p>Blessed and protected by ancient divine feminine power. Ready for the journey ahead.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 5: Confirmation -->
+        <section class="song-section" id="song5-section" data-song="song5">
+            <div class="song-title">
+                <h2>Song 5: Confirmation</h2>
+                <p class="song-desc">Meeting that one love and waiting for her/him to commit to move forward.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song5-twinflame">
+                    <img src="images/song5/panel1.jpg" alt="Soul recognition" loading="lazy">
+                    <div class="panel-text">
+                        <p>That moment of instant soul recognition. "I know you from beyond this lifetime."</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song5/panel2.jpg" alt="Deep soul connection" loading="lazy">
+                    <div class="panel-text">
+                        <p>Energy connecting between hearts. This is THE person. Sacred love recognized.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song5/panel3.jpg" alt="Waiting for commitment" loading="lazy">
+                    <div class="panel-text">
+                        <p>The pause. Love recognized, but commitment pending. Waiting for confirmation to move forward.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 6: Numb -->
+        <section class="song-section" id="song6-section" data-song="song6">
+            <div class="song-title">
+                <h2>Song 6: Numb</h2>
+                <p class="song-desc">Drinking oneself into a low state, then raising that state through self-love and meditation.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song6-healing">
+                    <img src="images/song6/panel1.jpg" alt="Dark night of the soul" loading="lazy">
+                    <div class="panel-text">
+                        <p>The dark night of the soul. Even awakened beings fall into shadow.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song6/panel2.jpg" alt="Turning point" loading="lazy">
+                    <div class="panel-text">
+                        <p>Rock bottom becomes the turning point. The choice to love yourself instead.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song6/panel3.jpg" alt="Meditation breakthrough" loading="lazy">
+                    <div class="panel-text">
+                        <p>Self-love and meditation breakthrough. Rising from darkness through inner healing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 7: Life Without Instructions -->
+        <section class="song-section" id="song7-section" data-song="song7">
+            <div class="song-title">
+                <h2>Song 7: Life Without Instructions</h2>
+                <p class="song-desc">Born with nothing but lies. Life without true instructions leads us to look within and find it.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song7-innerwise">
+                    <img src="images/song7/panel1.jpg" alt="Rejecting false guidance" loading="lazy">
+                    <div class="panel-text">
+                        <p>All external guidance revealed as lies designed to keep you from your true power.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song7/panel2.jpg" alt="Turning inward" loading="lazy">
+                    <div class="panel-text">
+                        <p>The choice to trust your inner wisdom over all external authorities.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song7/panel3.jpg" alt="Inner wisdom mastery" loading="lazy">
+                    <div class="panel-text">
+                        <p>Spiritual sovereignty achieved. You've become your own teacher and guide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 8: Meditation (Ride That Wave) -->
+        <section class="song-section" id="song8-section" data-song="song8">
+            <div class="song-title">
+                <h2>Song 8: Meditation (Ride That Wave)</h2>
+                <p class="song-desc">How to meditate and what happens once you find your meditative groove.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song8-meditation">
+                    <img src="images/song8/panel1.jpg" alt="Learning meditation" loading="lazy">
+                    <div class="panel-text">
+                        <p>Learning the practice. Focused concentration as you access higher states.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song8/panel2.jpg" alt="Finding the groove" loading="lazy">
+                    <div class="panel-text">
+                        <p>Finding your meditative groove. The wave of consciousness becomes effortless.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song8/panel3.jpg" alt="Transcendent bliss" loading="lazy">
+                    <div class="panel-text">
+                        <p>Complete meditative mastery. Riding the waves of consciousness in transcendent bliss.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 9: Tree Of Life -->
+        <section class="song-section" id="song9-section" data-song="song9">
+            <div class="song-title">
+                <h2>Song 9: Tree Of Life</h2>
+                <p class="song-desc">A deep spiritual journey. A pure out-of-body experience with visual hallucinations, climbing the spiritual tree of life and mastering your faculties along the way.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song9-treeoflife">
+                    <img src="images/song9/panel1.jpg" alt="Out of body journey begins" loading="lazy">
+                    <div class="panel-text">
+                        <p>Consciousness separates from physical form. The cosmic Tree of Life manifests.</p>
+                    </div>
+                </div>
+                
+                <div class="panel epic-panel">
+                    <img src="images/song9/panel2.jpg" alt="Lioness woman vision - first encounter" loading="lazy">
+                    <div class="panel-text">
+                        <p>"In a dream I came across a foreign land, saw a woman with a face of a lioness. Felt natural, like I had been there before."</p>
+                    </div>
+                </div>
+                
+                <div class="panel epic-panel">
+                    <img src="images/song9/panel3.jpg" alt="Tree of Life climbing sequence" loading="lazy">
+                    <div class="panel-text">
+                        <p>Ascending through the cosmic tree. Climbing from sphere to sphere, mastering each level of divine consciousness.</p>
+                    </div>
+                </div>
+                
+                <div class="panel epic-panel">
+                    <img src="images/song9/panel4.jpg" alt="Lioness woman vision - deeper recognition" loading="lazy">
+                    <div class="panel-text">
+                        <p>"In a dream I came across a foreign land, saw a woman with a face of a lioness. Felt natural, like I had been there before." Ancient souls meeting again.</p>
+                    </div>
+                </div>
+                
+                <div class="panel epic-panel">
+                    <img src="images/song9/panel5.jpg" alt="Crown consciousness achieved" loading="lazy">
+                    <div class="panel-text">
+                        <p>Reaching the crown. Ultimate cosmic consciousness and divine unity achieved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 10: Amazing Me -->
+        <section class="song-section" id="song10-section" data-song="song10">
+            <div class="song-title">
+                <h2>Song 10: Amazing Me</h2>
+                <p class="song-desc">A look back at self and how you have made it to this point after all you've been through.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song10-amazing">
+                    <img src="images/song10/panel1.jpg" alt="Mirror reflection transformation" loading="lazy">
+                    <div class="panel-text">
+                        <p>Looking in the mirror. Seeing who you were and who you've become. Amazing me.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song10/panel2.jpg" alt="Joyful celebration" loading="lazy">
+                    <div class="panel-text">
+                        <p>Pure joy and triumph! Celebrating the incredible transformation and resilience.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song10/panel3.jpg" alt="Integrated wisdom" loading="lazy">
+                    <div class="panel-text">
+                        <p>Fully integrated. Deep gratitude for the journey and the master you've become.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Song 11: Self Explorer -->
+        <section class="song-section" id="song11-section" data-song="song11">
+            <div class="song-title">
+                <h2>Song 11: Self Explorer</h2>
+                <p class="song-desc">Going within and going after each one of your fears and conquering them one by one to become the ultimate you.</p>
+            </div>
+            
+            <div class="panel-container">
+                <div class="panel" data-trigger="song11-ultimate">
+                    <img src="images/song11/panel1.jpg" alt="Going within to face fears" loading="lazy">
+                    <div class="panel-text">
+                        <p>The ultimate inner journey begins. Going within to explore the deepest parts of yourself.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <img src="images/song11/panel2.jpg" alt="Conquering fears one by one" loading="lazy">
+                    <div class="panel-text">
+                        <p>The ultimate boss battle. Facing every fear with divine power and spiritual mastery.</p>
+                    </div>
+                </div>
+                
+                <div class="panel epic-panel">
+                    <img src="images/song11/panel3.jpg" alt="The ultimate you achieved" loading="lazy">
+                    <div class="panel-text">
+                        <p>THE ULTIMATE YOU. Completely fearless. Fully realized. The sleeping god has fully awakened.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Closing -->
+        <footer class="story-footer">
+            <h2>The Journey Complete</h2>
+            <p>From unconscious worker bee to fearless divine god.</p>
+            <p class="credits">Created with love by Dark Star Energy</p>
+            <p class="sharing">Share this journey with someone who needs to remember their divine nature.</p>
+            <div class="social-links">
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">YouTube</a>
+                <a href="#" target="_blank">Spotify</a>
+            </div>
+        </footer>
+    </main>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

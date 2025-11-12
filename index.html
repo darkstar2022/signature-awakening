@@ -662,9 +662,122 @@ body {
         </footer>
     </main>
     
-    <script src="js/main=audio.js"></script>
+    <script>
+class AudioController {
+    constructor() {
+        this.currentAudio = null;
+        this.isPlaying = false;
+        this.songs = [];
+        this.init();
+    }
+    
+    init() {
+        this.setupAudioElements();
+        this.setupControls();
+        this.setupScrollTriggers();
+    }
+    
+    setupAudioElements() {
+        const audioElements = document.querySelectorAll('audio');
+        audioElements.forEach((audio, index) => {
+            this.songs.push(audio);
+            audio.volume = 0.7;
+            audio.addEventListener('ended', () => this.playNext(index));
+        });
+    }
+    
+    setupControls() {
+        const playButtons = document.querySelectorAll('.play-btn');
+        const pauseButtons = document.querySelectorAll('.pause-btn');
+        
+        playButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => this.playSong(index));
+        });
+        
+        pauseButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => this.pauseSong(index));
+        });
+    }
+    
+    setupScrollTriggers() {
+        const sections = document.querySelectorAll('.song-section');
+        const options = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50% 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const songIndex = Array.from(sections).indexOf(entry.target);
+                    this.fadeToSong(songIndex);
+                }
+            });
+        }, options);
+        
+        sections.forEach(section => observer.observe(section));
+    }
+    
+    playSong(index) {
+        if (this.currentAudio && !this.currentAudio.paused) {
+            this.currentAudio.pause();
+        }
+        
+        this.currentAudio = this.songs[index];
+        this.currentAudio.play();
+        this.isPlaying = true;
+        this.updateUI(index);
+    }
+    
+    pauseSong(index) {
+        if (this.songs[index]) {
+            this.songs[index].pause();
+            this.isPlaying = false;
+            this.updateUI(index);
+        }
+    }
+    
+    fadeToSong(index) {
+        if (this.currentAudio && this.currentAudio !== this.songs[index]) {
+            this.currentAudio.pause();
+        }
+        
+        if (this.songs[index] && this.isPlaying) {
+            this.playSong(index);
+        }
+    }
+    
+    playNext(currentIndex) {
+        const nextIndex = (currentIndex + 1) % this.songs.length;
+        if (nextIndex < this.songs.length) {
+            this.playSong(nextIndex);
+        }
+    }
+    
+    updateUI(index) {
+        // Update button states
+        const playBtns = document.querySelectorAll('.play-btn');
+        const pauseBtns = document.querySelectorAll('.pause-btn');
+        
+        playBtns.forEach((btn, i) => {
+            btn.style.display = (i === index && this.isPlaying) ? 'none' : 'inline-block';
+        });
+        
+        pauseBtns.forEach((btn, i) => {
+            btn.style.display = (i === index && this.isPlaying) ? 'inline-block' : 'none';
+        });
+    }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new AudioController();
+});
+</script>
+
 </body>
 </html>
+
 
 
 

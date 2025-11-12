@@ -1,0 +1,249 @@
+body { background-color: red !important; }
+/* Signature: The Awakening - Digital Graphic Novel Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0c0c2b 0%, #1e1e3f 50%, #2d1b69 100%);
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(45deg, #4a0e4e, #81237a, #b83dba);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    opacity: 0.3;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)); }
+    to { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6)); }
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+    font-style: italic;
+}
+
+.artist-name {
+    font-size: 1.8rem;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Song Section Styles */
+.song-section {
+    margin: 80px 0;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.song-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    opacity: 0.8;
+}
+
+.song-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.song-number {
+    font-size: 1.2rem;
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.song-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.song-description {
+    font-size: 1.1rem;
+    color: #cccccc;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+}
+
+/* Audio Controls */
+.audio-controls {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.play-btn {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Panel Grid */
+.panels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.panel {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.panel:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.panel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.footer p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.social-links a {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: 2px solid #ffd700;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #ffd700;
+    color: #2c3e50;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.5rem; }
+    .song-title { font-size: 2rem; }
+    .panels-grid { grid-template-columns: 1fr; }
+    .song-section { padding: 20px; margin: 40px 0; }
+    .social-links { flex-direction: column; align-items: center; }
+}
